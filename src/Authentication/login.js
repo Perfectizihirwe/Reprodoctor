@@ -9,7 +9,7 @@ const Login = ({navigation}) => {
 
   const [input1, onChangeInput1] = useState("");
   const [input2, onChangeInput2] = useState("");
-  const [toggleCheckBox, setToggleCheckBox] = useState(false)
+  const [toggleCheckBox, setToggleCheckBox] = useState(false);
 
   return(
       <SafeAreaProvider style={{backgroundColor: '#fff'}}>
