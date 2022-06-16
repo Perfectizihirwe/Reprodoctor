@@ -1,5 +1,8 @@
 import React, {useState} from "react"
 import {View, Text, Button, StyleSheet, TextInput} from "react-native";
+import OnBoardScreen from "../onBoard/index";
+import setShowRealApp from "../onBoard/index"
+
 
 
 const Login = ({navigation}) => {
@@ -37,7 +40,7 @@ const Login = ({navigation}) => {
           <Button
             title="Order"
             color="red"
-            onPress={() => navigation.navigate("OnBoard")}
+            onPress={() => navigation.navigate('OnBoard')}
             style={styles.butt1}
           />
       </View>
