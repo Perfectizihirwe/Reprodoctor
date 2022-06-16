@@ -3,18 +3,7 @@ import { View, Text, StyleSheet, ImageBackground, Button } from "react-native"
 import AppIntroSlider from "react-native-app-intro-slider";
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
-
 const OnBoardScreen = ({navigation}) => {
-
-  const [showRealApp, setShowRealApp] = useState(false);
-
-  const onDone = () => {
-    setShowRealApp(true);
-  };
-
-  const onSkip = () => {
-    setShowRealApp(true);
-  };
 
   const RenderItem = ({ item }) => {
     return (
@@ -35,20 +24,16 @@ const OnBoardScreen = ({navigation}) => {
 
   return (
     <>
-      {showRealApp ? (
-          navigation.navigate("Login")
-      ) : (
         <AppIntroSlider
           data={slides}
           renderItem={RenderItem}
-          onDone={onDone}
+          onDone={() => navigation.navigate("Login")}
           showSkipButton={true}
           showPrevButton={true}
-          onSkip={onSkip}
+          onSkip={() => navigation.navigate("Login")}
           dotStyle={{width: 20, backgroundColor: '#2d6bad',}}
           activeDotStyle={{width: 20, backgroundColor: 'white',}}
         />
-      )}
     </>
   );
 }
@@ -181,7 +166,7 @@ const slides = [
     title: "Experts in women's sexual life",
     text: 'We have the best best doctors with 15+ years of experience dealing with the sexual lives of women',
     image: require('../../../assets/woman.jpg'),
-  },
+  },  
   {
     key: 's3',
     title: 'Experts for teenagers too',
