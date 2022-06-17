@@ -5,7 +5,7 @@ import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import * as icons from "@expo/vector-icons";
 // import CheckBox from '@react-native-community/checkbox';
 
-const Login = ({ navigation }) => {
+const SignUpScreen = ({ navigation }) => {
   const [input1, onChangeInput1] = useState("");
   const [input2, onChangeInput2] = useState("");
   // const [toggleCheckBox, setToggleCheckBox] = useState(false);
@@ -24,7 +24,7 @@ const Login = ({ navigation }) => {
               marginTop: 90,
             }}
           >
-            Welcome back!
+            Create your account!
           </Text>
           <View
             style={{
@@ -33,9 +33,9 @@ const Login = ({ navigation }) => {
               paddingTop: 5,
             }}
           >
-            <Text style={{ opacity: 0.4 }}>Don't have an account ?</Text>
-            <TouchableOpacity onPress={() => navigation.navigate("SignUp")}>
-              <Text style={{ color: "blue" }}> Create it!</Text>
+            <Text style={{ opacity: 0.4 }}>Do already have an account ?</Text>
+            <TouchableOpacity onPress={() => navigation.navigate("Login")}>
+              <Text style={{ color: "blue" }}> Login!</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -48,7 +48,7 @@ const Login = ({ navigation }) => {
               color: "#112447",
             }}
           >
-            Phone number
+            Username
           </Text>
           <View
             style={{
@@ -61,18 +61,18 @@ const Login = ({ navigation }) => {
               marginHorizontal: 20,
             }}
           >
-            <icons.Feather
-              name="smartphone"
+            <icons.FontAwesome
+              name="user"
               size={25}
               color="gray"
               style={{ paddingTop: 11, paddingLeft: 15 }}
             />
             <TextInput
-              placeholder="Enter mobile number"
+              placeholder="Kagabo K"
               onChangeInput1={onChangeInput1}
               Value={input1}
-              keyboardType="phone-pad"
-              style={{ outline: "none", paddingLeft: 5 }}
+              keyboardType="default"
+              style={{ outline: "none", paddingLeft: 20 }}
             />
           </View>
           <Text
@@ -84,7 +84,7 @@ const Login = ({ navigation }) => {
               marginVertical: 20,
             }}
           >
-            Verification Code
+            Email
           </Text>
           <View
             style={{
@@ -97,95 +97,72 @@ const Login = ({ navigation }) => {
               marginBottom: 20,
             }}
           >
+            <icons.MaterialCommunityIcons
+              name="email"
+              size={25}
+              color="gray"
+              style={{ paddingTop: 11, paddingLeft: 15 }}
+            />
             <TextInput
-              placeholder="Enter verification code"
+              placeholder="kkagabo@gmail.com"
+              onChangeInput1={onChangeInput2}
+              Value={input2}
+              keyboardType="default"
+              style={{ outline: "none", paddingLeft: 20 }}
+            />
+          </View>
+          <Text
+            style={{
+              color: "#112447",
+              marginLeft: 20,
+              fontSize: 16,
+              fontWeight: "bold",
+              marginVertical: 20,
+            }}
+          >
+            Phone number
+          </Text>
+          <View
+            style={{
+              flexDirection: "row",
+              borderWidth: 1,
+              borderColor: "gray",
+              borderRadius: 10,
+              height: 50,
+              marginHorizontal: 20,
+              marginBottom: 20,
+            }}
+          >
+            <icons.Feather
+              name="smartphone"
+              size={25}
+              color="gray"
+              style={{ paddingTop: 11, paddingLeft: 15 }}
+            />
+            <TextInput
+              placeholder="+(250) 783 309 196"
               onChangeInput1={onChangeInput2}
               Value={input2}
               keyboardType="phone-pad"
               style={{ outline: "none", paddingLeft: 20 }}
             />
-            <TouchableOpacity>
-              <Text
-                style={{
-                  color: "blue",
-                  position: "relative",
-                  top: 15,
-                  left: 90,
-                }}
-              >
-                Send OTP
-              </Text>
-            </TouchableOpacity>
           </View>
         </View>
-
+        <View style={{ marginHorizontal: 80, borderRadius: 50 }}>
+          <Button
+            title="Next"
+            color="#0065ff"
+            onPress={() => navigation.navigate("Verification")}
+          />
+        </View>
         {/* <CheckBox
               disabled={false}
               value={toggleCheckBox}
               onValueChange={(newValue) => setToggleCheckBox(newValue)}
           />  */}
-        <View style={{ marginHorizontal: 80, borderRadius: 50 }}>
-          <Button
-            title="Login"
-            color="#0065ff"
-            onPress={() => navigation.navigate("HomeScreen")}
-          />
-        </View>
-        <View
-          style={{
-            flexDirection: "row",
-            marginHorizontal: 120,
-            paddingTop: 40,
-          }}
-        >
-          <Text style={{ color: "gray" }}>Forgot Password ?</Text>
-          <TouchableOpacity>
-            <Text style={{ color: "blue" }}> Reset</Text>
-          </TouchableOpacity>
-        </View>
-        <Text
-          style={{ marginHorizontal: 140, color: "gray", marginVertical: 20 }}
-        >
-          ---- Or login with ----
-        </Text>
-        <View style={{ flexDirection: "row", justifyContent: "space-around" }}>
-          <TouchableOpacity
-            style={{
-              flex: 1,
-              maxWidth: 200,
-              borderWidth: 1,
-              borderColor: "grey",
-              borderRadius: 10,
-              flexDirection: "row",
-              justifyContent: 'space-between',
-              alignItems: 'center',
-            }}
-          >
-            <icons.AntDesign name="facebook-square" size={24} color="grey" />
-            <Text>Facebook</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={{
-              flex: 1,
-              maxWidth: 200,
-              borderWidth: 1,
-              borderColor: "grey",
-              borderRadius: 10,
-              flexDirection: "row",
-              justifyContent: 'space-between',
-              alignItems: 'center',
-
-            }}
-          >
-            <icons.AntDesign name="google" size={24} color="grey" />
-            <Text>Google</Text>
-          </TouchableOpacity>
-        </View>
       </View>
     </SafeAreaProvider>
   );
 };
 
-const styles = StyleSheet.create({});
-
-export default Login;
+export default SignUpScreen;

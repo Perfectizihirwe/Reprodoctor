@@ -1,5 +1,5 @@
-import RootNavigator from './src/navigations/rootNavigator';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
+import RootNavigator from "./src/navigations/rootNavigator";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 
 export default function App() {
   return (
@@ -8,4 +8,3 @@ export default function App() {
     </SafeAreaProvider>
   );
 }
-

@@ -1,5 +1,11 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, ImageBackground, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  ImageBackground,
+  TouchableOpacity,
+} from "react-native";
 import AppIntroSlider from "react-native-app-intro-slider";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
@@ -12,36 +18,39 @@ const OnBoardScreen = ({ navigation }) => {
           alignItems: "center",
           justifyContent: "space-around",
           paddingBottom: 100,
-          backgroundColor: 'white',
+          backgroundColor: "white",
         }}
       >
         <ImageBackground style={styles.introImageStyle} source={item.image}>
           <Text style={styles.introTitleStyle}>{item.title}</Text>
-          <TouchableOpacity 
-          onPress={() => navigation.navigate("Login")}
-          style={{
-            flex: 1,
-            position: 'absolute',
-            top: 0,
-            left: 300,
-            height: 70,
-            width: 70,
-            backgroundColor: '#d9e8ff',
-            borderRadius: 50,
-            justifyContent: 'center',
-            alignContent: 'center',
-
-            }}>
-              <Text style={{
+          <TouchableOpacity
+            onPress={() => navigation.navigate("Login")}
+            style={{
+              flex: 1,
+              position: "absolute",
+              top: 0,
+              left: 300,
+              height: 70,
+              width: 70,
+              backgroundColor: "#d9e8ff",
+              borderRadius: 50,
+              justifyContent: "center",
+              alignContent: "center",
+            }}
+          >
+            <Text
+              style={{
                 flex: 1,
                 position: "relative",
                 top: 22,
                 left: 18,
                 fontSize: 18,
-                fontWeight: 'bold',
-                color: '#2c7cff',
-
-              }}>Skip</Text>
+                fontWeight: "bold",
+                color: "#2c7cff",
+              }}
+            >
+              Skip
+            </Text>
           </TouchableOpacity>
           <Text style={styles.introTextStyle}>{item.text}</Text>
         </ImageBackground>
@@ -99,7 +108,7 @@ const styles = StyleSheet.create({
   introTitleStyle: {
     marginTop: 30,
     marginHorizontal: 20,
-    color: '#112447',
+    color: "#112447",
     fontSize: 30,
     fontWeight: "bold",
   },
