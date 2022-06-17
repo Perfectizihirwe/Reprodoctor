@@ -128,7 +128,7 @@ const Login = ({ navigation }) => {
           <Button
             title="Login"
             color="#0065ff"
-            onPress={() => navigation.navigate("HomeScreen")}
+            onPress={() => navigation.navigate("Home")}
           />
         </View>
         <View
