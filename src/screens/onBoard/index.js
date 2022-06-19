@@ -29,7 +29,7 @@ const OnBoardScreen = ({ navigation }) => {
               flex: 1,
               position: "absolute",
               top: 0,
-              left: 300,
+              left: 280,
               height: 70,
               width: 70,
               backgroundColor: "#d9e8ff",
@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
   },
   introImageStyle: {
     flex: 1,
-    width: 400,
+    width: 370,
     height: 750,
     marginTop: 60,
   },
@@ -114,7 +114,7 @@ const styles = StyleSheet.create({
   },
   introTextStyle: {
     fontSize: 20,
-    marginLeft: 20,
+    marginHorizontal: 20,
     color: "#7d889b",
     marginTop: 5,
     opacity: 1,

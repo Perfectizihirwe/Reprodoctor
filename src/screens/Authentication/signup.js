@@ -3,12 +3,12 @@ import { View, Text, Button, StyleSheet, TextInput } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import * as icons from "@expo/vector-icons";
-// import CheckBox from '@react-native-community/checkbox';
+import { Checkbox } from "react-native-paper";
 
 const SignUpScreen = ({ navigation }) => {
   const [input1, onChangeInput1] = useState("");
   const [input2, onChangeInput2] = useState("");
-  // const [toggleCheckBox, setToggleCheckBox] = useState(false);
+  const [checked, setChecked] = useState(false);
 
   return (
     <SafeAreaProvider style={{ backgroundColor: "#fff" }}>
@@ -148,6 +148,25 @@ const SignUpScreen = ({ navigation }) => {
             />
           </View>
         </View>
+        <View style={{ flexDirection: "row", marginLeft: 20, marginBottom: 5 }}>
+          <Checkbox
+            color="blue"
+            status={checked ? "checked" : "unchecked"}
+            onPress={() => {
+              setChecked(!checked);
+            }}
+          />
+          <Text
+            style={{
+              position: "relative",
+              top: 5,
+              fontSize: 18,
+              paddingBottom: 10,
+            }}
+          >
+            I accept the terms and privacy policy
+          </Text>
+        </View>
         <View style={{ marginHorizontal: 80, borderRadius: 50 }}>
           <Button
             title="Next"
@@ -155,11 +174,6 @@ const SignUpScreen = ({ navigation }) => {
             onPress={() => navigation.navigate("Verification")}
           />
         </View>
-        {/* <CheckBox
-              disabled={false}
-              value={toggleCheckBox}
-              onValueChange={(newValue) => setToggleCheckBox(newValue)}
-          />  */}
       </View>
     </SafeAreaProvider>
   );

@@ -1,17 +1,23 @@
 import React, { useState } from "react";
-import { View, Text, Button, StyleSheet, TextInput } from "react-native";
-import { TouchableOpacity } from "react-native-gesture-handler";
+import {
+  View,
+  Text,
+  Button,
+  StyleSheet,
+  TextInput,
+  TouchableOpacity,
+} from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import * as icons from "@expo/vector-icons";
-// import CheckBox from '@react-native-community/checkbox';
+import { Checkbox } from "react-native-paper";
 
 const Login = ({ navigation }) => {
   const [input1, onChangeInput1] = useState("");
   const [input2, onChangeInput2] = useState("");
-  // const [toggleCheckBox, setToggleCheckBox] = useState(false);
+  const [checked, setChecked] = useState(false);
 
   return (
-    <SafeAreaProvider style={{ backgroundColor: "#fff" }}>
+    <SafeAreaProvider style={{ backgroundColor: "#fff"}}>
       <SafeAreaView></SafeAreaView>
       <View style={{ flex: 1 }}>
         <View>
@@ -21,7 +27,7 @@ const Login = ({ navigation }) => {
               fontSize: 30,
               fontWeight: "bold",
               marginHorizontal: 20,
-              marginTop: 90,
+              marginTop: 50,
             }}
           >
             Welcome back!
@@ -35,7 +41,7 @@ const Login = ({ navigation }) => {
           >
             <Text style={{ opacity: 0.4 }}>Don't have an account ?</Text>
             <TouchableOpacity onPress={() => navigation.navigate("SignUp")}>
-              <Text style={{ color: "blue" }}> Create it!</Text>
+              <Text style={{ color: "blue", opacity: 0.5 }}> Create it!</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -118,23 +124,29 @@ const Login = ({ navigation }) => {
             </TouchableOpacity>
           </View>
         </View>
-
-        {/* <CheckBox
-              disabled={false}
-              value={toggleCheckBox}
-              onValueChange={(newValue) => setToggleCheckBox(newValue)}
-          />  */}
+        <View style={{ flexDirection: "row", marginLeft: 20, marginBottom: 5 }}>
+          <Checkbox
+            color="blue"
+            status={checked ? "checked" : "unchecked"}
+            onPress={() => {
+              setChecked(!checked);
+            }}
+          />
+          <Text style={{ position: "relative", top: 5, fontSize: 18 }}>
+            Remember me
+          </Text>
+        </View>
         <View style={{ marginHorizontal: 80, borderRadius: 50 }}>
           <Button
             title="Login"
             color="#0065ff"
-            onPress={() => navigation.navigate("Home")}
+            onPress={() => navigation.navigate("MainNavigator")}
           />
         </View>
         <View
           style={{
             flexDirection: "row",
-            marginHorizontal: 120,
+            marginHorizontal: 100,
             paddingTop: 40,
           }}
         >
@@ -144,11 +156,17 @@ const Login = ({ navigation }) => {
           </TouchableOpacity>
         </View>
         <Text
-          style={{ marginHorizontal: 140, color: "gray", marginVertical: 20 }}
+          style={{ marginHorizontal: 120, color: "gray", marginVertical: 20 }}
         >
           ---- Or login with ----
         </Text>
-        <View style={{ flexDirection: "row", justifyContent: "space-around" }}>
+        <View
+          style={{
+            flexDirection: "row",
+            justifyContent: "space-around",
+            height: 40,
+          }}
+        >
           <TouchableOpacity
             style={{
               flex: 1,
@@ -157,8 +175,9 @@ const Login = ({ navigation }) => {
               borderColor: "grey",
               borderRadius: 10,
               flexDirection: "row",
-              justifyContent: 'space-between',
-              alignItems: 'center',
+              justifyContent: "space-around",
+              alignItems: "center",
+              marginHorizontal: 20,
             }}
           >
             <icons.AntDesign name="facebook-square" size={24} color="grey" />
@@ -172,9 +191,9 @@ const Login = ({ navigation }) => {
               borderColor: "grey",
               borderRadius: 10,
               flexDirection: "row",
-              justifyContent: 'space-between',
-              alignItems: 'center',
-
+              justifyContent: "space-around",
+              alignItems: "center",
+              marginHorizontal: 20,
             }}
           >
             <icons.AntDesign name="google" size={24} color="grey" />

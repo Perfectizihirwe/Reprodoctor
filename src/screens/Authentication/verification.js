@@ -27,7 +27,9 @@ const VerificationScreen = () => {
               paddingTop: 5,
             }}
           >
-            <Text style={{ opacity: 0.4 }}>We texted you a code to verify your phone number.</Text>
+            <Text style={{ opacity: 0.4 }}>
+              We texted you a code to verify your phone number.
+            </Text>
           </View>
         </View>
       </View>
