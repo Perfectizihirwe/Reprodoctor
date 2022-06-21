@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { SafeAreaView } from "react-native-safe-area-context";
 import {
@@ -8,10 +8,15 @@ import {
   TouchableOpacity,
   TextInput,
   Image,
+  ActivityIndicator,
 } from "react-native";
 import * as icons from "@expo/vector-icons";
 import Department from "../../components/department";
 import Pharmacy from "../../components/pharmacy";
+import MoviePoster from "../../components/MoviePoster";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchPopularMovies } from "../../redux/actions";
+import { setDepartment } from "../../redux/actions";
 
 const pharmacy = [
   {
@@ -34,37 +39,79 @@ const pharmacy = [
   },
 ];
 
-const departments = [
-  {
-    id: "1",
-    title: "Pediatrics",
-    icon: (
-      <icons.MaterialCommunityIcons
-        name="account-child-circle"
-        size={50}
-        color="#16278e"
-      />
-    ),
-  },
-  {
-    id: "2",
-    title: "Dental",
-    icon: <icons.FontAwesome5 name="tooth" size={40} color="#16278e" />,
-  },
-  {
-    id: "3",
-    title: "Lungs",
-    icon: <icons.FontAwesome5 name="lungs" size={40} color="#16278e" />,
-  },
-  {
-    id: "4",
-    title: "Heart",
-    icon: <icons.AntDesign name="heart" size={40} color="#16278e" />,
-  },
-];
+// const data = [
+//   {
+//     id: "1",
+//     title: "Pediatrics",
+//     icon: (
+//       <icons.MaterialCommunityIcons
+//         name="account-child-circle"
+//         size={50}
+//         color="#16278e"
+//       />
+//     ),
+//   },
+//   {
+//     id: "2",
+//     title: "Dental",
+//     icon: <icons.FontAwesome5 name="tooth" size={40} color="#16278e" />,
+//   },
+//   {
+//     id: "3",
+//     title: "Lungs",
+//     icon: <icons.FontAwesome5 name="lungs" size={40} color="#16278e" />,
+//   },
+//   {
+//     id: "4",
+//     title: "Heart",
+//     icon: <icons.AntDesign name="heart" size={40} color="#16278e" />,
+//   },
+// ];
 
 const HomeScreen = () => {
+  // const [department, setDepartment] = useState(null);
+  //const [popmovie, setPopMovie] = useState();
+  const [is_loading, setIsLoading] = useState(false);
+  const dispatch = useDispatch();
+  const {pop_movies} = useSelector((state) => state.Movies);
+  const {department} = useSelector((state) => state.Department);
+
+
+  useEffect(()=>{
+    // setDepartment(data);
+    dispatch(fetchPopularMovies())
+    dispatch(setDepartment())
+  }, [])
+
+  console.log(department);
+
+  // const fetchPopMovies= async () => {
+  //   setIsLoading(true)
+  //   try{
+  //     const {data} = await axios({
+  //       method: "get",
+  //       url: "https://api.themoviedb.org/3/movie/popular?api_key=caff9ec5965f31529c1d69befe0ae0b0",
+  //     });
+
+  //     if(data) {
+  //       const popmovie = data.results;
+  //       setIsLoading(false)
+  //       setPopMovie(popmovie)
+  //     }
+   
+    
+  //   }
+
+  //   catch(error){
+  //     console.log(error)
+  //   }
+    
+  //  };
+
+  
+
   return (
+    
     <SafeAreaProvider>
       <SafeAreaView>
         <ScrollView showsVerticalScrollIndicator={false}>
@@ -74,11 +121,11 @@ const HomeScreen = () => {
                 Hi Paula
               </Text>
               <TouchableOpacity style={{paddingHorizontal: 8}}>
-                <icons.AntDesign name="qrcode" size={24} color="#16278e" />
+                <icons.MaterialCommunityIcons name="line-scan" size={24} color="#16278e" />
               </TouchableOpacity>
               <TouchableOpacity>
                 <icons.Ionicons
-                  name="notifications-outline"
+                  name="notifications"
                   size={24}
                   color="#16278e"
                 />
@@ -113,7 +160,7 @@ const HomeScreen = () => {
           </View>
 
           <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-            {departments.map((departments, index) => {
+            {department?.map((departments, index) => {
               return (
                 <Department
                   key={departments.id}
@@ -146,7 +193,26 @@ const HomeScreen = () => {
               );
             })}
           </ScrollView>
-          
+          <View>
+          <View styles={{heght: 50, width: 200, backgroundColor: 'red', borderRadius: 20}}>
+          <Text style={{ fontSize: 25, fontWeight: "bold", flex: 4, margin: 20 }}>
+             Popular movies
+            </Text>
+            {is_loading && <ActivityIndicator  style={{size: 20, color: ""}}/>}
+            <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+            {pop_movies?.map((movie, index) => {
+              return (
+                <MoviePoster
+                  key={movie.id}
+                  title={movie.title}
+                  release_date={movie.release_date}
+                  image={movie.poster_path}
+                />
+              );
+            })}
+          </ScrollView>
+          </View>
+          </View>
         </ScrollView>
       </SafeAreaView>
     </SafeAreaProvider>

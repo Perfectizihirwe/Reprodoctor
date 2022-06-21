@@ -8,7 +8,7 @@ const Department = (props) => {
   const onHandlePress = () => {
     alert(title);
   };
-
+  
   return (
     <TouchableOpacity onPress={()=>{onHandlePress()}} style={styles.containerStyles}>
       {icon}

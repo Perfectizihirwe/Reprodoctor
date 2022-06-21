@@ -5,7 +5,7 @@ import StarRating from "react-native-star-rating-widget";
 import * as icons from '@expo/vector-icons'
 
 const Pharmacy = (props) => {
-  const { title, image, price, cart } = props;
+  const { title, image, price } = props;
   const [rating, setRating] = useState(0);
 
   return (
