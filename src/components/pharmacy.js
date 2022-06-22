@@ -1,8 +1,6 @@
 import React, {useState} from "react";
-import { View, Text, StyleSheet, Image } from "react-native";
-import { TouchableOpacity } from "react-native-gesture-handler";
-import StarRating from "react-native-star-rating-widget";
-import * as icons from '@expo/vector-icons'
+import { View, Text, StyleSheet, Image,TouchableOpacity } from "react-native";
+import * as icons from "@expo/vector-icons"
 
 const Pharmacy = (props) => {
   const { title, image, price } = props;
@@ -11,18 +9,10 @@ const Pharmacy = (props) => {
   return (
     <View style={styles.containerStyles}>
         {image}
-        <Text style={styles.title}>{title}</Text>
-        <StarRating
-        rating={rating}
-        onChange={setRating}
-        starSize={15}
-        starStyle={{
-            width: 9
-        }}
-      />
-      <View style={{flexDirection:"row", alignContent: 'center'}}>
+        <Text numberOfLines={1} style={styles.title}>{title}</Text>
+      <View style={{flexDirection:"row", alignItems: 'center'}}>
       <Text style={{flex: 0.6, fontSize: 13}}>{price}</Text>
-      <TouchableOpacity style={{}}>
+      <TouchableOpacity style={{alignSelf: 'center'}}>
         <icons.Entypo name="shopping-cart" size={24} color="#16278e" />
       </TouchableOpacity>
       </View>
@@ -39,9 +29,8 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
     width: 100,
     height: 150,
-    backgroundColor: "#a8adad",
+    backgroundColor: "#fff",
     borderRadius: 15,
-    opacity: 0.6,
   },
   title: {
     fontSize: 12,

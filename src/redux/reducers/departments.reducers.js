@@ -1,17 +1,20 @@
+import { ActionSheetIOS } from "react-native";
+import { setDepartment } from "../actions";
 
-const initialDepartment = {
-    department: [],
+
+const initialState = {
+    depart: [],
   };
   
-  export default (state = initialDepartment, action) => {
+  export default (state = initialState, action) => {
 
-    switch(action.types) {
+    switch(action.type) {
         case "SET DEPARTMENT":
-            return {
+            return {                
                 ...state,
-                department: action.payload,
-            }
+                depart: action.payload,
+            };
         default: return state;
-    }
+    };
    
-  }
+  };

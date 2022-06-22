@@ -1,6 +1,4 @@
 import React, {useState, useEffect} from "react";
-import { SafeAreaProvider } from "react-native-safe-area-context";
-import { SafeAreaView } from "react-native-safe-area-context";
 import {
   Text,
   View,
@@ -11,7 +9,7 @@ import {
   ActivityIndicator,
 } from "react-native";
 import * as icons from "@expo/vector-icons";
-import Department from "../../components/department";
+import DepartmentComponent from "../../components/department";
 import Pharmacy from "../../components/pharmacy";
 import MoviePoster from "../../components/MoviePoster";
 import { useDispatch, useSelector } from "react-redux";
@@ -74,7 +72,7 @@ const HomeScreen = () => {
   const [is_loading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
   const {pop_movies} = useSelector((state) => state.Movies);
-  const {department} = useSelector((state) => state.Department);
+  const {depart} = useSelector((state) => state.Department);
 
 
   useEffect(()=>{
@@ -83,7 +81,6 @@ const HomeScreen = () => {
     dispatch(setDepartment())
   }, [])
 
-  console.log(department);
 
   // const fetchPopMovies= async () => {
   //   setIsLoading(true)
@@ -112,8 +109,6 @@ const HomeScreen = () => {
 
   return (
     
-    <SafeAreaProvider>
-      <SafeAreaView>
         <ScrollView showsVerticalScrollIndicator={false}>
           <View style={{ margin: 20 }}>
             <View style={{ flexDirection: "row", alignItems: 'center', justifyContent: 'center' }}>
@@ -137,16 +132,15 @@ const HomeScreen = () => {
             style={{
               marginHorizontal: 20,
               flexDirection: "row",
-              backgroundColor: "#a8adad",
-              opacity: 0.3,
+              backgroundColor: "#fff",
               minHeight: 40,
               borderRadius: 20,
               alignItems: "center",
               paddingHorizontal: 20,
             }}
           >
-            <icons.EvilIcons name="search" size={24} color="black" />
-            <TextInput placeholder="Hospitals, Doctors, Drugs"></TextInput>
+            <icons.EvilIcons name="search" size={24} color="#16278e" />
+            <TextInput style={{color: "black",outline: 'none' , backfaceVisibility: 'hidden'}} placeholder="Hospitals, Doctors, Drugs"></TextInput>
           </View>
           <View
             style={{ flexDirection: "row", margin: 20, alignItems: "center" }}
@@ -155,17 +149,17 @@ const HomeScreen = () => {
               Departments
             </Text>
             <TouchableOpacity>
-              <Text style={{ color: "#a8adad" }}>More ></Text>
+              <Text style={{ color: "#16278e" }}>More ></Text>
             </TouchableOpacity>
           </View>
 
           <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-            {department?.map((departments, index) => {
+           {depart?.map((department, index) => {
               return (
-                <Department
-                  key={departments.id}
-                  title={departments.title}
-                  icon={departments.icon}
+                <DepartmentComponent
+                  key={department.id}
+                  title={department.title}
+                  icon={department.icon}
                 />
               );
             })}
@@ -177,7 +171,7 @@ const HomeScreen = () => {
               Pharmacy
             </Text>
             <TouchableOpacity>
-              <Text style={{ color: "#a8adad" }}>More ></Text>
+              <Text style={{ color: "#16278e" }}>More ></Text>
             </TouchableOpacity>
           </View>
 
@@ -185,7 +179,7 @@ const HomeScreen = () => {
             {pharmacy.map((pharmacy, index) => {
               return (
                 <Pharmacy
-                  key={pharmacy.id}
+                  key={index}
                   image={pharmacy.image}
                   title={pharmacy.title}
                   price={pharmacy.price}
@@ -193,7 +187,7 @@ const HomeScreen = () => {
               );
             })}
           </ScrollView>
-          <View>
+          {/* <View>
           <View styles={{heght: 50, width: 200, backgroundColor: 'red', borderRadius: 20}}>
           <Text style={{ fontSize: 25, fontWeight: "bold", flex: 4, margin: 20 }}>
              Popular movies
@@ -212,10 +206,8 @@ const HomeScreen = () => {
             })}
           </ScrollView>
           </View>
-          </View>
+          </View> */}
         </ScrollView>
-      </SafeAreaView>
-    </SafeAreaProvider>
   );
 };
 

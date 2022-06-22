@@ -1,9 +1,11 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import * as icons from "@expo/vector-icons"
 
-const Department = (props) => {
-  const { title, icon } = props;
+const DepartmentComponent = (props) => {
+
+  const {icon, title} = props;
 
   const onHandlePress = () => {
     alert(title);
@@ -17,7 +19,7 @@ const Department = (props) => {
   );
 };
 
-export default Department;
+export default DepartmentComponent;
 
 const styles = StyleSheet.create({
   containerStyles: {
@@ -26,9 +28,8 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
     width: 100,
     height: 150,
-    backgroundColor: "#a8adad",
+    backgroundColor: "#fff",
     borderRadius: 15,
-    opacity: 0.6,
   },
   title: {
     fontSize: 18,

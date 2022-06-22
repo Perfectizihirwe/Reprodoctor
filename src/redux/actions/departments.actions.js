@@ -1,6 +1,6 @@
 import * as icons from "@expo/vector-icons" 
 
-const values = [
+const value = [
     {
       id: "1",
       title: "Pediatrics",
@@ -30,9 +30,10 @@ const values = [
   ];
 
 
+
 export const setDepartment = () => {
     return (dispatch) => {
-        dispatch({ type: "SET DEPARTMENT", payload: values})
+        dispatch({ type: "SET DEPARTMENT", payload: value})
         
     };
 
